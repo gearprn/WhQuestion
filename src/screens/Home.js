@@ -5,7 +5,7 @@ import firebase from "../../firebase/firebase";
 const Home = ({ navigation }) => {
   const signOut = async () => {
     await firebase.auth().signOut();
-    navigation.navigate("login");
+    navigation.replace("login");
   };
 
   return (

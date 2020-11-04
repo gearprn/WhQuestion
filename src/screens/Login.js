@@ -18,7 +18,7 @@ const Login = ({ navigation }) => {
       .auth()
       .signInAnonymously()
       .then(() => {
-        navigation.navigate("home");
+        navigation.replace("home");
       })
       .catch((error) => {
         console.error(error);
