@@ -1,10 +1,23 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import firebase from "../../firebase/firebase";
 
-const Home = () => {
+const Home = ({ navigation }) => {
+  const signOut = async () => {
+    await firebase.auth().signOut();
+    navigation.replace("login");
+  };
+
   return (
     <View style={styles.container}>
       <Text>This is your home screen!</Text>
+      <Text>
+        You are authenticated as{" "}
+        {firebase.auth().currentUser.isAnonymous
+          ? "Guest"
+          : firebase.auth().currentUser.uid}
+      </Text>
+      <Button title="Sign Out" onPress={signOut} />
     </View>
   );
 };
